@@ -155,6 +155,7 @@ a {
 	@include titlesize(medium);
 	@include titleweight(light);
 	color: $theme-colour;
+	FONT-WEIGHT: BOLD;
 }
 
 .sidebar-background-item {
@@ -165,6 +166,10 @@ a {
 .list-block {
 	.list-block__title {
 		color: $theme-colour;
+
+		&.list-block__title--strong {
+			@include titleweight(light);
+		}
 	}
 
 	.list-block__list {
@@ -173,7 +178,12 @@ a {
 
 	.list-block__list-item {
 		@include flexcontainer(flex, column);
+		@include flexchild(7em);4
 		justify-content: center;
+		&.list-block__list-item--border {
+			@include flexchild(8em);
+			border-bottom: $theme-border;
+		}
 	}
 
 	.list-block__list-item-title {
@@ -182,21 +192,5 @@ a {
 	
 	.list-block__list-item-info {
 		color: $theme-extra-info;
-	}
-
-	.sidebar-related {
-		.list-block__title {
-			@include titleweight(light);
-		}
-		.list-block__list-item {
-			@include flexchild(7em);
-		}
-	}
-
-	.search-results {
-		.list-block__list-item {
-			@include flexchild(8em);
-			border-bottom: $theme-border;
-		}
 	}
 } 

@@ -21,176 +21,310 @@ a {
 }
 
 .wrapper {
-	display: flex;
+	@include flexcontainer(flex, row);
 	justify-content: center;
 }
 
 .grid {
 	max-width: 1280px;
-	@include grid($grid-theme...);
+	@include flexcontainer(flex, column);
 
 	.header {
-		display: flex;
-		justify-content: flex-start;
-		flex-flow: row nowrap;
-		grid-area: header;
 		padding: $theme-padding;
 		border-bottom: $theme-border;
 		z-index: 10;
 		background: #fff;
+
+		.header__logo {
+			max-width: 100%;
+			height: auto;
+
+			@include bp(mobile) {
+				max-width: 70%;
+			}
+		}
+	}
+}
+
+.sidebar {
+	@include sidebar($sidebar...);
+	@include flexcontainer(flex, column);
+	@include flexitem(1 30em);
+
+	@include bp(mobile) {
+		padding: .5em 1em;
+	}
+	@include bp(tablet) {
+		height: auto;
+		@include flexitem(none);
+	}
+	
+	.sidebar__header {
+		@include fontsize(medium);
+		@include fontweight(light);
+		color: $theme-colour;
+
+		@include bp(mobile) {
+			display: none;
+		}
+	}
+
+	&.sidebar--right {
+		order: 2;
 	}
 }
 
 #search-results-page {
-	@include grid($grid-search-main...);
-	
-	.sidebar {
-		@include sidebar($sidebar...);
-		grid-column: $grid-child-column-search-sidebar;
-	}
+	@include flexcontainer(flex, row);
 
-	.sidebar-background {
-		@include sidebarbg($sidebar-bg...);
-	}
-
-	.sidebar-filters {
-		display: flex;
-		flex-flow: column;
-
-		.sidebar-filters__label {
-			color: $theme-colour;
-			margin: 10px 0 5px 0;
-		}
-
-		.sidebar-filters__field {
-			height: 25px; 
-			border-radius: 2px;
-			border: 1px solid #ccc;
-		}
-
-		.sidebar__buttons {
-			margin-top: 20px;
-		}
-
-		.sidebar__buttons--primary { 
-			@include primarybutton($primary-button...);
-			background: $theme-colour;
-			color: $primary-button-colour;
-		}
-
-		.sidebar__buttons--primary:hover {
-			background: $primary-button-background-hover;
-		}
-
-		.sidebar__buttons--link-button {
-			@include linkbutton($link-button...);
-			color: $link-button-colour;
-			margin-left: 8px;
-		}
+	@include bp(tablet) {
+		@include flexcontainer(flex, column);
 	}
 
 	.search-results-content { 
-		grid-area: content;
-		grid-row: $grid-child-row;
-		grid-column: $grid-child-column-search-content; 
+		@include flexitem(1 auto);
 		padding: $theme-padding;
-		
-	// 	.search-results-content__title {
-	// 		@include titleweight(bold);
-	// 		color: $theme-colour; 
-	// 	}
-	// 	.search-results__list {
-	// 		@include flexcontainer(flex, column);
-	// 	}
-	// 	.search-results__list-item {
-	// 		@include flexchild(1 8em);
-	// 		@include flexcontainer(flex, column);
-	// 		justify-content: center;
-	// 		border-bottom: $theme-border; 
-	// 	}
-	// 	.search-results__list-item-title {
-	// 		color: $theme-colour;
-	// 	}
+	}
 
-	// 	.search-results__list-item-info {
-	// 		color: $theme-extra-info;
-	// 	} 
- }
+	.mobile-only-header {
+		display: none;
+
+		@include bp(mobile) {
+			color: $theme-colour;
+			@include fontweight(bold);
+			@include flexcontainer(flex, row);
+			padding: 1rem;
+		}
+	}
+
+	.mobile-sort-by {
+		display: none;
+
+		@include bp(mobile) {
+			padding: 0 1em 1em;
+			@include flexcontainer(flex, row);
+		}
+
+		.mobile-sort-by__field {
+			width: 100%;
+			@include fieldstyle($field-styles...);
+			height: 30px;
+		}
+	}
 }
 
 #item-page {
-	@include grid($grid-item-main...);
+	@include flexcontainer(flex, row);
 
 	.item-page-content {
-		grid-area: content;
-		grid-row: $grid-child-row;
-		grid-column: $grid-child-column-item-content;
+		@include flexitem(1 auto);
 		padding: $theme-padding;
 
 		.item-page-content__title {
-			@include titleweight(light);
-			color: $theme-colour; 
+			@include fontweight(light);
+			color: $theme-colour;  
 		}
-		.item-page-body {
+	}	
+}
+
+.filter-search {
+	@include flexcontainer(flex, column);
+
+	.filter-search__label {
+		color: $theme-colour;
+		margin: .6em 0 .3em 0;
+	}
+
+	.filter-search__field {
+		@include fieldstyle($field-styles...);
+
+		@include bp(mobile) {
+			height: 30px;
+		}
+	}
+
+	.filter-search__container {
+		@include flexcontainer(flex, row);
+		@include bp(mobile) {
 			@include flexcontainer(flex, column);
 		}
+
+		&.filter-search__container--buttons {
+			margin-top: $margin-top-xl;
+		}
+
+		.filter-search__button {
+			@include primarybutton($primary-button...);
+			background: $theme-colour;
+			color: $primary-button-colour;
+
+			@include bp(mobile) {
+				height: 30px;
+			}
+		}
+		.filter-search__button:hover {
+			background: $primary-button-background-hover;
+		}
+		.filter-search__link-button {
+			@include linkbutton($link-button...);
+			color: $link-button-colour;
+			margin-left: 1em;
+
+			@include bp(mobile) {
+				margin-top: $margin-top-l;
+				margin-left: 0;
+			}
+		}
 	}
-
-	.sidebar {
-		@include sidebar($sidebar...);
-		grid-column: $grid-child-column-item-sidebar;
-
-		// .sidebar__related-list {
-		// 	@include flexcontainer(flex, column);
-		// }
-		// .sidebar__related-list-item {
-		// 	@include flexcontainer(flex, column);	
-		// 	@include flexchild(7em);
-		// 	justify-content: center;
-		// }
-	}
 }
 
-.sidebar__header {
-	@include titlesize(medium);
-	@include titleweight(light);
-	color: $theme-colour;
-	FONT-WEIGHT: BOLD;
-}
-
-.sidebar-background-item {
-	@include sidebarbg($sidebar-bg...);
-	right: 640px;
-}
-
-.list-block {
-	.list-block__title {
+.listed-article {
+	.listed-article__title {
 		color: $theme-colour;
+		margin-bottom: .3em;
 
-		&.list-block__title--strong {
-			@include titleweight(light);
+		@include bp(mobile) {
+			display: none;
+		}
+
+		&.listed-article__title--light {
+			@include fontweight(light);
+		}
+
+		&.listed-article__title--bold {
+			@include fontweight(bold);
+		}
+
+		&.listed-article__title--bottom-margin-l {
+			margin-bottom: $margin-bottom-l;
+
+			@include bp(mobile) {
+				margin-bottom: $margin-bottom-s;
+			}
 		}
 	}
 
-	.list-block__list {
+	.listed-article__list {
 		@include flexcontainer(flex, column);
 	}
 
-	.list-block__list-item {
+	.listed-article__list-item {
 		@include flexcontainer(flex, column);
-		@include flexchild(7em);4
-		justify-content: center;
-		&.list-block__list-item--border {
-			@include flexchild(8em);
+		@include flexitem(1 8em);
+
+		&.listed-article__list-item--search-results-border {
+			padding: 20px 0;
+			@include flexitem(none);
 			border-bottom: $theme-border;
 		}
+
+		@include bp(mobile) {
+			&.listed-article__list-item--search-results-border:first-child {
+				padding-top: 0;
+			}
+		}
+
+		&.listed-article__list-item--flow-across {
+			@include flexcontainer(flex, row);	
+			@include flexitem(auto);
+			margin: .2em 0;	
+		}
 	}
 
-	.list-block__list-item-title {
+	.listed-article__list-item-title {
 		color: $theme-colour;
+		margin-right: .3em;
 	}
-	
-	.list-block__list-item-info {
+
+	.listed-article__list-item-info {
 		color: $theme-extra-info;
 	}
-} 
+}
+
+.primary-article {
+	.primary-article__title {
+		color: $theme-colour;
+		@include fontweight(light);	
+	}
+
+	.primary-article__section {
+		margin-bottom: 1.5em;
+	}
+
+	.primary-article__section:first-child {
+		margin-top: 1.5em;
+	}
+}
+
+.pagination {
+	@include flexcontainer(flex, row);
+	height: 40px;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: $theme-border;
+	border-top: $theme-border;
+
+	@include bp(mobile) {
+		display: none;
+	}
+
+	&.pagination--no-border-top {
+		border-top: none;
+	}
+
+	.pagination__link {
+		color: $theme-colour;
+	}
+
+	.pagination__page-numbers {
+		@include flexitem(3 auto);
+		@include flexcontainer(flex, row);
+		justify-content: space-between;
+	}
+	.pagination__sort-by {
+		@include flexitem(2 auto);
+		@include flexcontainer(flex, row);
+		justify-content: flex-end;
+	}
+	.pagination__label {
+		margin-right: .5em;
+		color: $theme-colour;
+	}
+}
+
+.mobile-filter-label {
+	display: none;
+	
+	.mobile-filter-label__img {
+		max-width: 12px;
+	}
+
+	@include bp(mobile) {
+		@include flexcontainer(flex, row);
+		justify-content: space-between;
+		align-items: center;
+		@include fontsize(small);
+		@include fontweight(light);
+		color: $theme-extra-info;
+	}
+}
+
+.mobile-filter-label + .mobile-filter-input {
+	display: none;
+
+	@include bp(mobile) {
+		display: none;	
+	}
+}
+
+.mobile-filter-label + .mobile-filter-input + .filter-search--collapse	{
+	@include bp(mobile) {
+		display: none;	
+	}
+}
+
+.mobile-filter-label + .mobile-filter-input:checked + .filter-search--collapse {
+	@include bp(mobile) {
+		@include flexcontainer(flex, column);
+	}
+}

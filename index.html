@@ -1,25 +1,37 @@
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 	<div class="wrapper">
 		<div class="grid">
 			<header class="header">
-				<h1 class="header__logo">
-					<img src="img/header-img.png" alt="Council Logo">
+				<h1>
+					<img src="img/header-img.png" class="header__logo" alt="Council Logo">
 				</h1>				
 			</header>
 			<main id="search-results-page">
+				<h2 class="mobile-only-header">Disclosure Log</h2>
+				<div class="mobile-sort-by">
+					<!-- <label for="sort" class="mobile-sort-by__label">Sort By</label> -->
+					<select name="sort" id="sort" class="mobile-sort-by__field">
+						<option selected disabled value="">Sort By</option>
+						<option value="">Relevance</option>
+						<option value="">Date Descending</option>
+						<option value="">Date Ascending</option>
+						<option value="">A - Z</option>
+					</select>
+				</div>
 				<div class="sidebar">
-					<h4 class="sidebar__header">
-						Filter Search
-					</h4>
-					<div class="filter-search">
+					<h4 class="sidebar__header">Filter Search</h4>
+					<label for="mob" class="mobile-filter-label">Filter Search <span><img class="mobile-filter-label__img" src="img/plus.png" alt=""></span></label>
+					<input id="mob" type="checkbox" class="mobile-filter-input">
+					<div class="filter-search filter-search--collapse">
 						<label class="filter-search__label" for="keyword">Keyword</label>
-						<input type="text" id="keyword" name="keyword-search" class="filter-search__select">
+						<input type="text" id="keyword" name="keyword-search" class="filter-search__field">
 						<label for="year" class="filter-search__label">Year</label>
-						<select name="year" id="year" class="filter-search__select">
+						<select name="year" id="year" class="filter-search__field">
 							<option value="">2017</option>
 							<option value="">2016</option>
 							<option value="">2015</option>
@@ -27,7 +39,7 @@
 							<option value="">2013</option>
 						</select>
 						<label for="month" class="filter-search__label">Month</label>
-						<select name="month" id="month" class="filter-search__select">
+						<select name="month" id="month" class="filter-search__field">
 							<option value="January">January</option>
 							<option value="Febuary">Febuary</option>
 							<option value="March">March</option>
@@ -41,28 +53,64 @@
 							<option value="November">November</option>
 							<option value="December">December</option>
 						</select>
-						<div class="filter-search__containers filter-search__containers--buttons">
+						<div class="filter-search__container filter-search__container--buttons">
 							<button class="filter-search__button">Apply Filter</button>
-							<button class="filter-search__link">Clear Filter</button>
+							<button class="filter-search__link-button">Clear Filter</button>
 						</div>					
 					</div>
 				</div>
 				<div class="search-results-content">
-					<div class="list-block">
-						<h2 class="list-block__title">Disclosure Log</h2>
-						<ul class="list-block__list">
-							<li class="list-block__list-item list-block__list-item--border"><a class="list-block__list-item-title" href="#">Community right to bid</a><span class="list-block__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</li>
-							<li class="list-block__list-item list-block__list-item--border"><a class="list-block__list-item-title" href="#">Community right to bid</a><span class="list-block__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</li>
-							<li class="list-block__list-item list-block__list-item--border"><a class="list-block__list-item-title" href="#">Community right to bid</a><span class="list-block__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</li>
-							<li class="list-block__list-item list-block__list-item--border"><a class="list-block__list-item-title" href="#">Community right to bid</a><span class="list-block__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</li>
-							<li class="list-block__list-item list-block__list-item--border"><a class="list-block__list-item-title" href="#">Community right to bid</a><span class="list-block__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</li>
-							<li class="list-block__list-item list-block__list-item--border"><a class="list-block__list-item-title" href="#">Community right to bid</a><span class="list-block__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</li>
+					<div class="listed-article">
+						<h2 class="listed-article__title listed-article__title--bold listed-article__title--bottom-margin-l">Disclosure Log</h2>
+						<div class="pagination">
+							<div class="pagination__page-numbers">
+								<a href="#" class="pagination__link">< Prev</a>
+								<a href="#" class="pagination__link">1</a>
+								<a href="#" class="pagination__link">2</a>
+								<a href="#" class="pagination__link">3</a>
+								<a href="#" class="pagination__link">4</a>
+								<a href="#" class="pagination__link">Next ></a>
+							</div>
+							<div class="pagination__sort-by">
+								<label for="sort" class="pagination__label">Sort By</label>
+								<select name="sort" id="sort" class="pagination__field">
+									<option value="">Relevance</option>
+									<option value="">Date Descending</option>
+									<option value="">Date Ascending</option>
+									<option value="">A - Z</option>
+								</select>
+							</div>				
+						</div>
+						<ul class="listed-article__list">
+							<li class="listed-article__list-item listed-article__list-item--search-results-border"><a class="listed-article__list-item-title" href="#">Community right to bid</a><span class="listed-article__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span><p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p></li>
+							<li class="listed-article__list-item listed-article__list-item--search-results-border"><a class="listed-article__list-item-title" href="#">Community right to bid</a><span class="listed-article__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span><p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p></li>
+							<li class="listed-article__list-item listed-article__list-item--search-results-border"><a class="listed-article__list-item-title" href="#">Community right to bid</a><span class="listed-article__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span><p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p></li>
+							<li class="listed-article__list-item listed-article__list-item--search-results-border"><a class="listed-article__list-item-title" href="#">Community right to bid</a><span class="listed-article__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span><p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p></li>
+							<li class="listed-article__list-item listed-article__list-item--search-results-border"><a class="listed-article__list-item-title" href="#">Community right to bid</a><span class="listed-article__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span><p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p></li>
+							<li class="listed-article__list-item listed-article__list-item--search-results-border"><a class="listed-article__list-item-title" href="#">Community right to bid</a><span class="listed-article__list-item-info">Full Disclosure - Publish Date: 20th November 2016</span><p>lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p></li>
 						</ul>
+						<div class="pagination pagination--no-border-top">
+							<div class="pagination__page-numbers">
+								<a href="#" class="pagination__link">< Prev</a>
+								<a href="#" class="pagination__link">1</a>
+								<a href="#" class="pagination__link">2</a>
+								<a href="#" class="pagination__link">3</a>
+								<a href="#" class="pagination__link">4</a>
+								<a href="#" class="pagination__link">Next ></a>
+							</div>
+							<div class="pagination__sort-by">
+								<label for="sort" class="pagination__label">Sort By</label>
+								<select name="sort" id="sort" class="pagination__field">
+									<option value="">Relevance</option>
+									<option value="">Date Descending</option>
+									<option value="">Date Ascending</option>
+									<option value="">A - Z</option>
+								</select>
+							</div>				
+						</div>
 					</div>
 				</div>
-				<div class="sidebar-background"></div>
 			</main>
-			<footer></footer>
 		</div>
 	</div>	
 </body>
